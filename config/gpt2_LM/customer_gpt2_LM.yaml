@@ -1,0 +1,5 @@
+name: customer_gpt2_LM
+gpt2_type: "gpt2"
+max_length: null
+checkpoint_path: null
+strict_load: true

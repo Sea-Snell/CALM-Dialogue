@@ -1,0 +1,41 @@
+defaults:
+  - gpt2_LM@model: table_gpt2_LM
+  - torch_dataset@train_dataset: toy_synth_table_dataset
+  - torch_dataset@dev_dataset: toy_synth_table_dataset
+  - evaluator: toy_table_gpt2_evaluator
+  - _self_
+
+model:
+  checkpoint_path: outputs/GPT2_table_pretrain1/new_model.pkl
+  attn_prior: uniform
+  geometric_rate: 0.95
+
+evaluator:
+  max_turns: 4
+  generation_kwargs:
+    max_generation_len: 32
+
+train:
+  save_checkpoint_dir: outputs/GPT2_table_pretrain_test2/
+  optim_state_path: null
+  epochs: 1
+  dataloader_workers: 1
+  bsize: 8
+  grad_accum_steps: 4
+  log_every: 256
+  eval_every: 1024
+  save_every: 16384
+  eval_bsize: 8
+  eval_batches: 16
+  lr: 1e-4
+  weight_decay: 0.01
+  max_steps: null
+  loss:
+    table_head_weight: 1.0
+    attn_kl_weight: 1.0
+
+wandb:
+  use_wandb: false
+  wandb_project: gpt2_table_pretrain
+  log_name: null
+

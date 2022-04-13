@@ -1,0 +1,47 @@
+defaults:
+  - gpt2_LM@model: customer_gpt2_LM
+  - torch_dataset@train_dataset: basic_dataset
+  - torch_dataset@dev_dataset: basic_dataset
+  - evaluator: customer_gpt2_evaluator
+  - _self_
+
+train_dataset:
+  data:
+    filepath: data/processed_ad/train_filtered.json
+    heauristic_filter: true
+    filter_with_goal: true
+
+dev_dataset:
+  data:
+    filepath: data/processed_ad/dev_filtered.json
+    heauristic_filter: true
+    filter_with_goal: true
+
+model:
+  checkpoint_path: null
+
+evaluator:
+  max_generation_len: 512
+
+train:
+  save_checkpoint_dir: outputs/customer_bot_test2/
+  optim_state_path: null
+  epochs: 1000
+  dataloader_workers: 1
+  bsize: 2
+  grad_accum_steps: 4
+  log_every: 256
+  eval_every: 1024
+  save_every: 16384
+  eval_bsize: 2
+  eval_batches: 4
+  lr: 1e-4
+  weight_decay: 0.01
+  max_steps: null
+  loss: {}
+
+wandb:
+  use_wandb: false
+  wandb_project: gpt2_customer_bot_train
+  log_name: null
+

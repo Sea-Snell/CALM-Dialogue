@@ -1,0 +1,4 @@
+defaults:
+  - /policy: gpt2_table_agent_policy
+  - _self_
+name: full_policy_bot

@@ -1,0 +1,4 @@
+defaults:
+  - /constraint_parser: oracle_constraint_parser
+  - _self_
+name: constraint_reward

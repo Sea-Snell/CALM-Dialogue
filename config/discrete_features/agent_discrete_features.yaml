@@ -1,0 +1,4 @@
+name: discrete_features
+path_to_discrete: "data/processed_ad/discrete_features.pkl"
+key: "agent"
+strict: true

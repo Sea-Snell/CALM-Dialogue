@@ -1,0 +1,9 @@
+defaults:
+  - /discrete_features: agent_discrete_features
+name: basic_agent_gpt2_LM
+gpt2_type: "gpt2"
+max_length: null
+checkpoint_path: null
+attn_prior: geometric
+geometric_rate: 0.9
+strict_load: true

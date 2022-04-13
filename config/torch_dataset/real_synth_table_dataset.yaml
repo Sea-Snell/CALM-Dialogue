@@ -1,0 +1,9 @@
+defaults:
+  - /airdialogue@synth_data: synthetic_sampler
+  - /airdialogue@real_data: real_data
+name: real_synth_table_dataset
+cond_reward_key: conditioned_reward
+max_retries: 500
+original_prob: 0.05
+verbose: true
+reward_1_prob: 0.5

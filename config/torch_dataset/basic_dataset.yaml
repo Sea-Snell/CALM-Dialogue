@@ -1,0 +1,5 @@
+defaults:
+  - /airdialogue@data: real_data
+name: basic_dataset
+cond_reward_key: conditioned_reward
+cond_reward: 1.0

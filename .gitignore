@@ -1,0 +1,8 @@
+.env
+.vscode/
+data/
+!scripts/data/
+__pycache__/
+outputs/
+.DS_Store
+*.swp

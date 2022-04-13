@@ -1,0 +1,6 @@
+name: customer_gpt2_evaluator
+max_generation_len: null
+temp: 1.0
+top_k: null
+top_p: null
+verbose: true

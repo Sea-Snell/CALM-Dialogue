@@ -1,0 +1,4 @@
+defaults:
+  - /policy: remote_policy
+  - _self_
+name: basic_policy_bot

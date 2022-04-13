@@ -1,0 +1,5 @@
+defaults:
+  - /policy: gpt2_table_agent_policy
+  - /reward: oracle_reward
+  - _self_
+name: mcts_bot

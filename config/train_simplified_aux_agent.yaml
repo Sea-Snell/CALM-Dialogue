@@ -1,0 +1,63 @@
+defaults:
+  - gpt2_LM@model: simplified_aux_gpt2_LM
+  - torch_dataset@train_dataset: real_synth_table_dataset2
+  - torch_dataset@dev_dataset: real_synth_table_dataset2
+  - evaluator: simplified_aux_gpt2_evaluator
+  - _self_
+
+train_dataset:
+  real_data:
+    filepath: data/processed_ad/train_filtered.json
+    heauristic_filter: true
+    filter_with_goal: true
+  max_retries: 500
+  original_prob: 0.05
+  verbose: false
+
+dev_dataset:
+  real_data:
+    filepath: data/processed_ad/dev_filtered.json
+    heauristic_filter: true
+    filter_with_goal: true
+  max_retries: 500
+  original_prob: 0.05
+  verbose: false
+
+model:
+  checkpoint_path: outputs/GPT2_simplified_aux_pretrain1/model.pkl
+
+evaluator:
+  max_turns: 40
+  opposing_bot:
+    policy:
+      kind: sample
+      lm:
+        checkpoint_path: outputs/customer_bot2/model.pkl
+    generation_kwargs:
+      max_generation_len: 64
+  generation_kwargs:
+    max_generation_len: 64
+
+train:
+  save_checkpoint_dir: outputs/GPT2_simplified_aux_real_from_pretrain_test/
+  optim_state_path: null
+  epochs: 1
+  dataloader_workers: 0
+  bsize: 2
+  grad_accum_steps: 32
+  log_every: 256
+  eval_every: 4096
+  save_every: 16384
+  eval_bsize: 2
+  eval_batches: 32
+  lr: 1e-4
+  weight_decay: 0.01
+  max_steps: null
+  loss:
+    aux_head_weight: 1.0
+
+wandb:
+  use_wandb: true
+  wandb_project: gpt2_simplified_aux_real
+  log_name: null
+

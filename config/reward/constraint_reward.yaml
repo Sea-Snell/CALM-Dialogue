@@ -1,0 +1,4 @@
+defaults:
+  - /constraint_parser: constraint_parser_roberta
+  - _self_
+name: constraint_reward

@@ -1,0 +1,37 @@
+defaults:
+ - torch_dataset@dataset: basic_dataset
+ - policy@model: gpt2_table_agent_policy
+#  - gpt2_LM@model: basic_agent_gpt2_LM
+#  - constraint_parser@model: constraint_parser_roberta
+ - evaluator: language_evaluator
+ - _self_
+
+dataset:
+  data:
+    filepath: data/processed_ad/dev_unfiltered_subset.json
+    heauristic_filter: false
+    filter_with_goal: false
+
+model:
+  lm:
+    checkpoint_path: outputs/basic_agent2/model.pkl
+  kind: beam
+
+# model:
+#   url: http://35.232.72.95:5000/api/message
+
+# model:
+#   checkpoint_path: outputs/basic_agent2/model.pkl
+
+# evaluator:
+#   generation_kwargs:
+#     max_generation_len: null
+#     n: 1
+#   trunc_first: true
+
+dataloader_workers: 0
+bsize: 2
+eval_batches: -1
+output_dir: outputs/language_eval/basic_agent2_ppl.json
+call_get_loss: false
+loss: {}

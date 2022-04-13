@@ -1,0 +1,5 @@
+defaults:
+  - /airdialogue@data: synthetic_sampler
+name: toy_synth_table_dataset
+cond_reward_key: conditioned_reward
+reward_1_prob: 0.5

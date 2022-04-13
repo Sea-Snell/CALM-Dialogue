@@ -1,0 +1,68 @@
+defaults:
+  - gpt2_LM@model: table_gpt2_LM
+  - torch_dataset@train_dataset: real_synth_table_dataset
+  - torch_dataset@dev_dataset: real_synth_table_dataset
+  - evaluator: table_gpt2_evaluator
+  - _self_
+
+train_dataset:
+  real_data:
+    filepath: data/processed_ad/train_filtered.json
+    heauristic_filter: true
+    filter_with_goal: true
+  max_retries: 500
+  original_prob: 0.05
+  verbose: false
+  reward_1_prob: 1.0
+
+dev_dataset:
+  real_data:
+    filepath: data/processed_ad/dev_filtered.json
+    heauristic_filter: true
+    filter_with_goal: true
+  max_retries: 500
+  original_prob: 0.05
+  verbose: false
+  reward_1_prob: 1.0
+
+model:
+  checkpoint_path: null
+  attn_prior: uniform
+  geometric_rate: 0.95
+
+evaluator:
+  max_turns: 40
+  opposing_bot:
+    policy:
+      kind: sample
+      lm:
+        checkpoint_path: outputs/customer_bot2/model.pkl
+    generation_kwargs:
+      max_generation_len: 64
+  generation_kwargs:
+    max_generation_len: 64
+
+train:
+  save_checkpoint_dir: outputs/GPT2_table_real_only_positive/
+  optim_state_path: null
+  epochs: 1
+  dataloader_workers: 0
+  bsize: 2
+  grad_accum_steps: 64
+  log_every: 256
+  eval_every: 16384
+  save_every: 16384
+  eval_bsize: 2
+  eval_batches: 64
+  lr: 1e-4
+  weight_decay: 0.01
+  max_steps: null
+  loss:
+    table_head_weight: 1.0
+    attn_kl_weight: 1.0
+
+wandb:
+  use_wandb: true
+  wandb_project: gpt2_table_real
+  log_name: null
+

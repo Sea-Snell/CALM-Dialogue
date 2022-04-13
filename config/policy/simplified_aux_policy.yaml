@@ -1,0 +1,4 @@
+defaults:
+  - /gpt2_LM@lm: simplified_aux_gpt2_LM
+  - _self_
+name: gpt2_lm_policy

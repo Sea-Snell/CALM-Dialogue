@@ -1,0 +1,24 @@
+defaults:
+ - bot: gpt2_customer_bot
+ - _self_
+
+bot:
+  policy:
+    kind: sample
+    lm:
+      checkpoint_path: outputs/customer_bot2/model.pkl
+  generation_kwargs:
+    n: 1
+
+serve:
+  redis_host: localhost
+  redis_port: 6379
+  redis_db: 0
+  flask_host: 0.0.0.0
+  flask_port: 5001
+  flask_threaded: true
+  flask_processes: 1
+  client_delay: 0.01
+
+data:
+  cond_reward_key: conditioned_reward

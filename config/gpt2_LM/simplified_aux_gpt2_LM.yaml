@@ -1,0 +1,7 @@
+defaults:
+  - /discrete_features: agent_discrete_features
+name: simplified_aux_gpt2_LM
+gpt2_type: "gpt2"
+max_length: null
+checkpoint_path: null
+strict_load: true

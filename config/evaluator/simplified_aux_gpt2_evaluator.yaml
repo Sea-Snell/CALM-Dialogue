@@ -1,0 +1,12 @@
+defaults:
+  - /bot@opposing_bot: gpt2_customer_bot
+name: simplified_aux_gpt2_evaluator
+max_turns: 80
+verbose: true
+kind: sample
+generation_kwargs:
+  max_generation_len: null
+  n: 1
+  temp: 1.0
+  top_k: null
+  top_p: null

@@ -1,0 +1,7 @@
+defaults:
+  - /discrete_features: customer_discrete_features
+name: constraint_parser_roberta
+roberta_type: "roberta-base"
+max_length: null
+checkpoint_path: null
+strict_load: true
